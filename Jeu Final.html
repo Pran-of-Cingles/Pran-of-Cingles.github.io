@@ -39,7 +39,12 @@
             accent-color: crimson;
         }
         #finishTextDiv {
-            
+            margin-top: 100px;
+            margin-left: 450px; 
+        }
+        #dividerNameHere {
+            margin-top: 100px;
+            margin-left: 450px;
         }
        </style>   
   </head>
@@ -67,19 +72,21 @@
 
         <script>
                 var questiontext = `<img src="https://raw.githubusercontent.com/Pran-of-Cingles/add-a-name-here/refs/heads/main/images/question0.png" alt="Erreur de création d'image">
-                // ,<img src="https://raw.githubusercontent.com/Pran-of-Cingles/add-a-name-here/refs/heads/main/images/question1.png" alt="Erreur de création d'image">
-                // ,<img src="https://raw.githubusercontent.com/Pran-of-Cingles/add-a-name-here/refs/heads/main/images/question2.png" alt="Erreur de création d'image">
-                // ,<img src="https://raw.githubusercontent.com/Pran-of-Cingles/add-a-name-here/refs/heads/main/images/question3.png" alt="Erreur de création d'image">
-                // ,<img src="https://raw.githubusercontent.com/Pran-of-Cingles/add-a-name-here/refs/heads/main/images/question4.png" alt="Erreur de création d'image">
-                // ,<img src="https://raw.githubusercontent.com/Pran-of-Cingles/add-a-name-here/refs/heads/main/images/question5.png" alt="Erreur de création d'image">
-                // ,<img src="https://raw.githubusercontent.com/Pran-of-Cingles/add-a-name-here/refs/heads/main/images/question6.png" alt="Erreur de création d'image">
-                // ,<img src="https://raw.githubusercontent.com/Pran-of-Cingles/add-a-name-here/refs/heads/main/images/question7.png" alt="Erreur de création d'image">
-                // ,<img src="https://raw.githubusercontent.com/Pran-of-Cingles/add-a-name-here/refs/heads/main/images/question8.png" alt="Erreur de création d'image">
-                // ,<img src="https://raw.githubusercontent.com/Pran-of-Cingles/add-a-name-here/refs/heads/main/images/question9.png" alt="Erreur de création d'image">`;
+                ,<img src="https://raw.githubusercontent.com/Pran-of-Cingles/add-a-name-here/refs/heads/main/images/question1.png" alt="Erreur de création d'image">
+                ,<img src="https://raw.githubusercontent.com/Pran-of-Cingles/add-a-name-here/refs/heads/main/images/question2.png" alt="Erreur de création d'image">
+                ,<img src="https://raw.githubusercontent.com/Pran-of-Cingles/add-a-name-here/refs/heads/main/images/question3.png" alt="Erreur de création d'image">
+                ,<img src="https://raw.githubusercontent.com/Pran-of-Cingles/add-a-name-here/refs/heads/main/images/question4.png" alt="Erreur de création d'image">
+                ,<img src="https://raw.githubusercontent.com/Pran-of-Cingles/add-a-name-here/refs/heads/main/images/question5.png" alt="Erreur de création d'image">
+                ,<img src="https://raw.githubusercontent.com/Pran-of-Cingles/add-a-name-here/refs/heads/main/images/question6.png" alt="Erreur de création d'image">
+                ,<img src="https://raw.githubusercontent.com/Pran-of-Cingles/add-a-name-here/refs/heads/main/images/question7.png" alt="Erreur de création d'image">
+                ,<img src="https://raw.githubusercontent.com/Pran-of-Cingles/add-a-name-here/refs/heads/main/images/question8.png" alt="Erreur de création d'image">
+                ,<img src="https://raw.githubusercontent.com/Pran-of-Cingles/add-a-name-here/refs/heads/main/images/question9.png" alt="Erreur de création d'image">`;
                 // 2/3: The images here are what get displayed when its their question. You can add a class/id to them if it helps you adjust the sizing.
                 var questionTextTbl = questiontext.split(",")
                 var questionCorrectValues = "1,0,1,0,2,0,1,0,2,2";
                 var questionCorrectValuesTbl = questionCorrectValues.split(",")
+                var correctButtons = "Il manque les barres obliques,Une variable n’est pas bien définie,Une variable n’est pas bien définie,Une variable n’est pas définie,Toute les réponses,La plupart du code est en commentaire,Il manque le parseInt,La variable i ne change jamais,La liste n’est pas bien structurée,Il manque des guillemets";
+                var correctButtonsTbl = correctButtons.split(",");
                 var questionNumbers = [];
                 var fiveRandomQuestions = [];
                 while(questionNumbers.length < 5)   {
@@ -173,7 +180,7 @@
                     if (inputs[questionCorrectValuesTbl[questionNumbers[questionsCompleted]]].checked) {
                         totalpoints = totalpoints + 1;
                     }   else {
-                        wrongQuestions = wrongQuestions + 'La bonne bonne réponse pour la question ' + (questionsCompleted + 1) + ' était le bouton ' + questionCorrectValuesTbl[questionNumbers[questionsCompleted]] + '. <br>'
+                        wrongQuestions = wrongQuestions + 'La bonne bonne réponse pour la question ' + (questionsCompleted + 1) + ' était "' + correctButtonsTbl[questionNumbers[questionsCompleted]] + '". <br>'
                     }
 
 
@@ -183,8 +190,9 @@
                     dividerQuestionHTMLReplace.innerHTML = '';
                     questionsCompleted = questionsCompleted + 1
                     if(questionsCompleted >= 5) {
-                        dividerAnswerHTMLReplace.innerHTML = "Vous avez terminé! Vous avez eu " + totalpoints + "/5 questions!"
-                        var dividerNameHereHTMLReplace = document.getElementById("DividerNameHere")
+                        var finishTextDivHTMLReplace = document.getElementById("finishTextDiv"); 
+                        finishTextDivHTMLReplace.innerHTML = "Vous avez terminé! Vous avez eu " + totalpoints + "/5 points!"
+                        var dividerNameHereHTMLReplace = document.getElementById("dividerNameHere")
                         if(wrongQuestions == "") {
                             dividerNameHereHTMLReplace.innerHTML = "Aucune question mauvaise!  "
                         } else {
@@ -204,7 +212,7 @@
                 }
             
         </script>
-        <div id="DividerNameHere">
+        <div id="dividerNameHere">
             <p>
             </p>
         </div>
